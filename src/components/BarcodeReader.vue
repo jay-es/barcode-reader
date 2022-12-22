@@ -2,7 +2,7 @@
 import { onMounted, ref } from "vue";
 
 const video = ref<HTMLVideoElement>();
-const barcode = ref("");
+const barcodes = ref<string[]>([]);
 
 onMounted(async () => {
   if (!video.value) return;
@@ -16,29 +16,35 @@ onMounted(async () => {
 });
 
 setInterval(async () => {
-  if (!video.value || barcode.value) return;
+  if (!video.value || barcodes.value.length) return;
 
   const detector = new (window as any).BarcodeDetector({ formats: ["ean_13"] });
-  const result = await detector.detect(video.value);
+  const result: any[] = await detector.detect(video.value);
 
-  if (result?.[0]?.rawValue) {
-    barcode.value = result[0].rawValue;
+  if (result.length) {
+    barcodes.value = result.map((v) => v.rawValue);
     video.value.pause();
   }
 }, 1000);
 
 const reset = () => {
-  barcode.value = "";
+  barcodes.value = [];
   video.value?.play();
 };
 </script>
 
 <template>
   <video ref="video" width="240" autoplay />
-  <template v-if="barcode">
-    <p>barcode: {{ barcode }}</p>
-    <button @click="reset()">reset</button>
-  </template>
+
+  <ul>
+    <li v-for="v in barcodes" :key="v">
+      <a :href="`https://www.amazon.co.jp/s?k=${v}`" target="_blank">
+        barcode: {{ v }}
+      </a>
+    </li>
+  </ul>
+
+  <button v-show="barcodes.length" @click="reset()">reset</button>
 </template>
 
 <style scoped>
