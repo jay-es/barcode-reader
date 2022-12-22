@@ -1,37 +1,46 @@
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
 
-const WIDTH = 180;
-const HEIGHT = 320;
-
 const video = ref<HTMLVideoElement>();
-const canvas = ref<HTMLCanvasElement>();
+const barcode = ref("");
 
 onMounted(async () => {
   if (!video.value) return;
 
   video.value.srcObject = await navigator.mediaDevices.getUserMedia({
     audio: false,
-    video: { facingMode: "environment" },
+    video: {
+      facingMode: "environment", // 背面カメラ
+    },
   });
 });
 
-setInterval(() => {
-  if (!video.value || !canvas.value) return;
-  const context = canvas.value.getContext("2d");
-  context?.drawImage(video.value, 0, 0, WIDTH, HEIGHT);
+setInterval(async () => {
+  if (!video.value || barcode.value) return;
 
-  // const data = canvas.value.toDataURL("image/png");
+  const detector = new (window as any).BarcodeDetector({ formats: ["ean_13"] });
+  const result = await detector.detect(video.value);
+
+  if (result?.[0]?.rawValue) {
+    barcode.value = result[0].rawValue;
+    video.value.pause();
+  }
 }, 1000);
+
+const reset = () => {
+  barcode.value = "";
+  video.value?.play();
+};
 </script>
 
 <template>
-  <video ref="video" :width="WIDTH" :height="HEIGHT" autoplay />
-  <canvas ref="canvas" :width="WIDTH" :height="HEIGHT" />
+  barcode: {{ barcode }}<br />
+  <video ref="video" width="240" autoplay />
+  <button @click="reset()">reset</button>
 </template>
 
 <style scoped>
 video {
-  background-color: #eee;
+  display: block;
 }
 </style>
