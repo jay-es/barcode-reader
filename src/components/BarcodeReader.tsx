@@ -29,10 +29,10 @@ export function BarcodeReader() {
     const timerId = setInterval(async () => {
       if (!video.current) return;
 
-      const detector = new (window as any).BarcodeDetector({
+      const detector = new window.BarcodeDetector({
         formats: ["ean_13"],
       });
-      const result: any[] = await detector.detect(video.current);
+      const result = await detector.detect(video.current);
 
       if (result.length) {
         setBarcodes(result.map(({ rawValue }) => rawValue));
