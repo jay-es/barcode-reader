@@ -1,4 +1,5 @@
 import style from "./app.module.css";
+import { BarcodeReader } from "./components/BarcodeReader";
 
 export function App() {
   return (
@@ -6,7 +7,9 @@ export function App() {
       <header class="container">
         <h1 class={style.h1}>Barcode Reader</h1>
       </header>
-      <main class="container">{/* <BarcodeReader /> */}</main>
+      <main class="container">
+        <BarcodeReader />
+      </main>
       <footer class="container">&copy;2022 jay-es</footer>
     </>
   );
