@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
+import { detectBarcode } from "../lib/detectBarcode";
 import { getUserMedia } from "../lib/getUserMedia";
 import style from "./BarcodeReader.module.css";
 
@@ -23,13 +24,10 @@ export function BarcodeReader() {
     const timerId = setInterval(async () => {
       if (!video.current) return;
 
-      const detector = new window.BarcodeDetector({
-        formats: ["ean_13"],
-      });
-      const result = await detector.detect(video.current);
+      const result = await detectBarcode(video.current);
 
       if (result.length) {
-        setBarcodes(result.map(({ rawValue }) => rawValue));
+        setBarcodes(result);
         video.current.pause();
       }
     }, 1000);
