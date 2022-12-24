@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "preact/hooks";
+import { getUserMedia } from "../lib/getUserMedia";
 import style from "./BarcodeReader.module.css";
 
 export function BarcodeReader() {
@@ -9,17 +10,10 @@ export function BarcodeReader() {
   useEffect(() => {
     if (!video.current) return;
 
-    navigator.mediaDevices
-      .getUserMedia({
-        audio: false,
-        video: {
-          facingMode: "environment", // 背面カメラ
-        },
-      })
-      .then((stream) => {
-        if (!video.current) return;
-        video.current.srcObject = stream;
-      });
+    getUserMedia().then((stream) => {
+      if (!video.current) return;
+      video.current.srcObject = stream;
+    });
   }, [video]);
 
   // video からバーコード読み取り
