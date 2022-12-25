@@ -4,6 +4,7 @@ export const getUserMedia = (): Promise<MediaStream | null> =>
       audio: false,
       video: {
         facingMode: "environment", // 背面カメラ
+        aspectRatio: 0.5,
       },
     })
     .catch(() => null);

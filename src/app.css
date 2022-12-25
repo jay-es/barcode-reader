@@ -1,0 +1,23 @@
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+
+#app > .container {
+  margin-top: calc(var(--spacing) / 2);
+  margin-bottom: calc(var(--spacing) / 2);
+}
+
+#app > main {
+  flex-grow: 1;
+}
+
+#app > footer {
+  text-align: center;
+  color: var(--muted-color);
+}
+
+.h1 {
+  margin-bottom: 0;
+}

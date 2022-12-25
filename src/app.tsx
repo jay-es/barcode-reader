@@ -1,4 +1,4 @@
-import style from "./app.module.css";
+import "./app.css";
 import { BarcodeReader } from "./components/BarcodeReader";
 import { ErrorList } from "./components/ErrorList";
 
@@ -6,7 +6,7 @@ export function App() {
   return (
     <>
       <header class="container">
-        <h1 class={style.h1}>Barcode Reader</h1>
+        <h1 class="h1">Barcode Reader</h1>
       </header>
       <main class="container">
         <ErrorList />

@@ -43,7 +43,7 @@ export function BarcodeReader() {
 
   return (
     <>
-      <video ref={video} class={style.video} width="240" autoPlay />
+      <video ref={video} class={style.video} autoPlay />
 
       <BarcodeList barcodes={barcodes} />
 

@@ -1,4 +1,5 @@
 .video {
   display: block;
-  margin: 0.75rem auto;
+  margin-bottom: var(--typography-spacing-vertical);
+  width: 100%;
 }
