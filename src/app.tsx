@@ -1,6 +1,6 @@
 import style from "./app.module.css";
 import { BarcodeReader } from "./components/BarcodeReader";
-import { Errors } from "./components/Errors";
+import { ErrorList } from "./components/ErrorList";
 
 export function App() {
   return (
@@ -9,7 +9,7 @@ export function App() {
         <h1 class={style.h1}>Barcode Reader</h1>
       </header>
       <main class="container">
-        <Errors />
+        <ErrorList />
         <BarcodeReader />
       </main>
       <footer class="container">&copy;2022 jay-es</footer>

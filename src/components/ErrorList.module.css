@@ -1,0 +1,3 @@
+.list > li {
+  color: var(--form-element-invalid-border-color);
+}
