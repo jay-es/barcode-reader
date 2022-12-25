@@ -1,5 +1,6 @@
 import { memo } from "preact/compat";
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
+
 import { detectBarcode } from "../lib/detectBarcode";
 import { getUserMedia } from "../lib/getUserMedia";
 import { BarcodeList } from "./BarcodeList";

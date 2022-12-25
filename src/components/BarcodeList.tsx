@@ -1,4 +1,5 @@
 import { memo } from "preact/compat";
+
 import style from "./BarcodeList.module.css";
 
 type Props = {
