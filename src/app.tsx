@@ -1,8 +1,9 @@
+import { memo } from "preact/compat";
 import "./app.css";
 import { BarcodeReader } from "./components/BarcodeReader";
 import { ErrorList } from "./components/ErrorList";
 
-export function App() {
+export const App = memo(() => {
   return (
     <>
       <header class="container">
@@ -15,4 +16,4 @@ export function App() {
       <footer class="container">&copy;2022 jay-es</footer>
     </>
   );
-}
+});

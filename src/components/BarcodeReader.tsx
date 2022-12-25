@@ -1,10 +1,11 @@
-import { useEffect, useRef, useState } from "preact/hooks";
+import { memo } from "preact/compat";
+import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import { detectBarcode } from "../lib/detectBarcode";
 import { getUserMedia } from "../lib/getUserMedia";
 import { BarcodeList } from "./BarcodeList";
 import style from "./BarcodeReader.module.css";
 
-export function BarcodeReader() {
+export const BarcodeReader = memo(() => {
   const video = useRef<HTMLVideoElement>(null);
   const [barcodes, setBarcodes] = useState<string[]>([]);
 
@@ -36,10 +37,10 @@ export function BarcodeReader() {
     return () => clearInterval(timerId);
   }, [video, barcodes]);
 
-  const reset = () => {
+  const reset = useCallback(() => {
     setBarcodes([]);
     video.current?.play();
-  };
+  }, [video, setBarcodes]);
 
   return (
     <>
@@ -52,4 +53,4 @@ export function BarcodeReader() {
       </button>
     </>
   );
-}
+});
