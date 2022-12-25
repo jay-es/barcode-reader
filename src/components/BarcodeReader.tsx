@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "preact/hooks";
 import { detectBarcode } from "../lib/detectBarcode";
 import { getUserMedia } from "../lib/getUserMedia";
+import { BarcodeList } from "./BarcodeList";
 import style from "./BarcodeReader.module.css";
 
 export function BarcodeReader() {
@@ -44,19 +45,7 @@ export function BarcodeReader() {
     <>
       <video ref={video} class={style.video} width="240" autoPlay />
 
-      <ul>
-        {barcodes.map((code) => (
-          <li key={code}>
-            <a
-              href={`https://www.amazon.co.jp/s?k=${code}`}
-              target="_blank"
-              rel="noreferrer"
-            >
-              {code}
-            </a>
-          </li>
-        ))}
-      </ul>
+      <BarcodeList barcodes={barcodes} />
 
       <button onClick={reset} disabled={!barcodes.length}>
         reset
