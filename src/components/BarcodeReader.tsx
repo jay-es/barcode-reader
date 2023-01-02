@@ -6,9 +6,8 @@ import { getUserMedia } from "../lib/getUserMedia";
 import { BarcodeList } from "./BarcodeList";
 import style from "./BarcodeReader.module.css";
 
-export const BarcodeReader = memo(() => {
+const useVideo = () => {
   const video = useRef<HTMLVideoElement>(null);
-  const [barcodes, setBarcodes] = useState<string[]>([]);
 
   // カメラ入力を video に
   useEffect(() => {
@@ -19,6 +18,13 @@ export const BarcodeReader = memo(() => {
       video.current.srcObject = stream;
     });
   }, [video]);
+
+  return video;
+};
+
+export const BarcodeReader = memo(() => {
+  const video = useVideo();
+  const [barcodes, setBarcodes] = useState<string[]>([]);
 
   // video からバーコード読み取り
   useEffect(() => {
