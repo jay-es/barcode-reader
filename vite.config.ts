@@ -1,15 +1,20 @@
 import preact from "@preact/preset-vite";
 import { certificateFor } from "devcert";
-import { defineConfig } from "vite";
+import { CommonServerOptions, defineConfig } from "vite";
 
 // https://vitejs.dev/config/
 export default defineConfig(async () => {
-  const { key, cert } = await certificateFor("localhost");
+  let https: CommonServerOptions["https"];
+
+  if (process.env.NODE_ENV === "development") {
+    const { key, cert } = await certificateFor("localhost");
+    https = { key, cert };
+  }
 
   return {
     plugins: [preact()],
     server: {
-      https: { key, cert },
+      https,
     },
   };
 });
