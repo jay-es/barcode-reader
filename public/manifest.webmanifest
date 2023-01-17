@@ -1,0 +1,12 @@
+{
+  "name": "Barcode Reader",
+  "start_url": "/",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "barcode-scanner-icon.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
+}
