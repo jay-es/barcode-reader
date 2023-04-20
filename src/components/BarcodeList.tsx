@@ -1,6 +1,6 @@
 import { memo } from "preact/compat";
 
-import style from "./BarcodeList.module.css";
+import * as style from "./BarcodeList.css";
 
 type Props = {
   barcodes: string[];

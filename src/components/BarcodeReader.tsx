@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import { detectBarcode } from "../lib/detectBarcode";
 import { getUserMedia } from "../lib/getUserMedia";
 import { BarcodeList } from "./BarcodeList";
-import style from "./BarcodeReader.module.css";
+import * as style from "./BarcodeReader.css";
 
 const useVideo = () => {
   const video = useRef<HTMLVideoElement>(null);
