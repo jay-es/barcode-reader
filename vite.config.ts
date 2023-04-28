@@ -1,5 +1,4 @@
 import preact from "@preact/preset-vite";
-import { vanillaExtractPlugin } from "@vanilla-extract/vite-plugin";
 import { certificateFor } from "devcert";
 import { CommonServerOptions, defineConfig } from "vite";
 
@@ -13,7 +12,7 @@ export default defineConfig(async () => {
   }
 
   return {
-    plugins: [preact(), vanillaExtractPlugin()],
+    plugins: [preact()],
     server: {
       https,
     },
