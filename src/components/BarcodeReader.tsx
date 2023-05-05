@@ -4,7 +4,7 @@ import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 import { detectBarcode } from "../lib/detectBarcode";
 import { getUserMedia } from "../lib/getUserMedia";
 import { BarcodeList } from "./BarcodeList";
-import style from "./BarcodeReader.module.css";
+import styles from "./BarcodeReader.module.css";
 
 const useVideo = () => {
   const video = useRef<HTMLVideoElement>(null);
@@ -51,7 +51,7 @@ export const BarcodeReader = memo(() => {
 
   return (
     <>
-      <video ref={video} class={style.video} autoPlay />
+      <video ref={video} class={styles.video} autoPlay />
 
       <BarcodeList barcodes={barcodes} />
 

@@ -1,13 +1,13 @@
 import { memo } from "preact/compat";
 
-import style from "./BarcodeList.module.css";
+import styles from "./BarcodeList.module.css";
 
 type Props = {
   barcodes: string[];
 };
 
 export const BarcodeList = memo<Props>(({ barcodes }) => (
-  <ul class={style.list}>
+  <ul class={styles.list}>
     {barcodes.map((code) => (
       <li key={code}>
         <a
