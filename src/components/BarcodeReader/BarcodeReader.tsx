@@ -1,9 +1,9 @@
 import { memo } from "preact/compat";
 import { useCallback, useEffect, useRef, useState } from "preact/hooks";
 
-import { detectBarcode } from "../lib/detectBarcode";
-import { getUserMedia } from "../lib/getUserMedia";
-import { BarcodeList } from "./BarcodeList";
+import { detectBarcode } from "../../lib/detectBarcode";
+import { getUserMedia } from "../../lib/getUserMedia";
+import { BarcodeList } from "../BarcodeList";
 import styles from "./BarcodeReader.module.css";
 
 const useVideo = () => {
@@ -39,7 +39,7 @@ export const BarcodeReader = memo(() => {
         setBarcodes(result);
         video.current.pause();
       }
-    }, 1000);
+    }, 800);
 
     return () => clearInterval(timerId);
   }, [video, barcodes]);
