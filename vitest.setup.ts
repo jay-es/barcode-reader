@@ -4,4 +4,5 @@ import { afterEach, expect } from "vitest";
 
 expect.extend(matchers);
 
+// Vitest で globals:false の場合は自動でクリーンアップされない
 afterEach(cleanup);
