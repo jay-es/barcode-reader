@@ -2,8 +2,8 @@ import "./app.css";
 
 import { memo } from "preact/compat";
 
-import { BarcodeReader } from "./components/BarcodeReader";
-import { ErrorList } from "./components/ErrorList";
+import { BarcodeReader } from "@/components/BarcodeReader";
+import { ErrorList } from "@/components/ErrorList";
 
 export const App = memo(() => {
   return (

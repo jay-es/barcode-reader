@@ -1,8 +1,9 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/preact";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
 
-import * as detectBarcode from "../../lib/detectBarcode";
-import * as getUserMedia from "../../lib/getUserMedia";
+import * as detectBarcode from "@/lib/detectBarcode";
+import * as getUserMedia from "@/lib/getUserMedia";
+
 import { BarcodeReader } from "./BarcodeReader";
 
 describe("BarcodeReader", () => {
