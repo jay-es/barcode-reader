@@ -1,7 +1,8 @@
 import { memo } from "preact/compat";
 import { useEffect, useState } from "preact/hooks";
 
-import { getUserMedia } from "../../lib/getUserMedia";
+import { getUserMedia } from "@/lib/getUserMedia";
+
 import styles from "./ErrorList.module.css";
 
 export const API_ERROR =

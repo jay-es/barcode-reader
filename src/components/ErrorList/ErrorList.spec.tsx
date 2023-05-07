@@ -1,7 +1,8 @@
 import { render, screen, waitFor, within } from "@testing-library/preact";
 import { afterEach, describe, expect, it, vi } from "vitest";
 
-import * as lib from "../../lib/getUserMedia";
+import * as lib from "@/lib/getUserMedia";
+
 import { API_ERROR, CAMERA_ERROR, ErrorList } from "./ErrorList";
 
 describe("ErrorList", () => {
