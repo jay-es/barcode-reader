@@ -1,11 +1,12 @@
 import { memo } from "preact/compat";
 import { useEffect, useState } from "preact/hooks";
 
-import { getUserMedia } from "../lib/getUserMedia";
+import { getUserMedia } from "../../lib/getUserMedia";
 import styles from "./ErrorList.module.css";
 
-const API_ERROR = "This browser does not support the Barcode Detection API.";
-const CAMERA_ERROR = "No camera detected.";
+export const API_ERROR =
+  "This browser does not support the Barcode Detection API.";
+export const CAMERA_ERROR = "No camera detected.";
 
 export const ErrorList = memo(() => {
   const apiError = window.BarcodeDetector ? "" : API_ERROR;

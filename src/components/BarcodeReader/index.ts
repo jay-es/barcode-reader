@@ -1,0 +1,1 @@
+export { BarcodeReader } from "./BarcodeReader";
